@@ -1,0 +1,5 @@
+{
+  "name": "Resume Screen AI",
+  "description": "An AI-powered HR screening tool to analyze multiple CVs against job requirements and generate candidate scorecards.",
+  "requestFramePermissions": []
+}

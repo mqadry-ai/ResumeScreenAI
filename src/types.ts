@@ -1,0 +1,21 @@
+export interface JobProfile {
+  id: string;
+  name: string;
+  field: string;
+  experience: string;
+  skills: string;
+  otherRequirements: string;
+}
+
+export interface CandidateResult {
+  id: string;
+  profileId: string;
+  fileName: string;
+  name: string;
+  score: number;
+  strengths: string[];
+  summary: string;
+  status: 'pending' | 'analyzing' | 'success' | 'error';
+  errorMessage?: string;
+  file?: File;
+}
