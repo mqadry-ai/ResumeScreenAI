@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { UploadCloud } from 'lucide-react';
 
 interface Props {
@@ -28,7 +28,7 @@ export function FileUpload({ onFilesSelected }: Props) {
         file.type === 'application/pdf' || 
         file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
         file.type === 'text/plain'
-      );
+      ) as File[];
       if (files.length > 0) {
         onFilesSelected(files);
       } else {
@@ -39,7 +39,7 @@ export function FileUpload({ onFilesSelected }: Props) {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      const files = Array.from(e.target.files);
+      const files = Array.from(e.target.files) as File[];
       onFilesSelected(files);
       e.target.value = '';
     }

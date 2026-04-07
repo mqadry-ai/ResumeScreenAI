@@ -6,7 +6,7 @@ interface Props {
 }
 
 export function RequirementsForm({ requirements, onChange }: Props) {
-  const handleChange = (field: keyof typeof requirements, value: string) => {
+  const handleChange = (field: keyof typeof requirements, value: string | number) => {
     onChange({ ...requirements, [field]: value });
   };
 
@@ -27,25 +27,43 @@ export function RequirementsForm({ requirements, onChange }: Props) {
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Experience Level</label>
-          <input 
-            type="text"
-            value={requirements.experience}
-            onChange={e => handleChange('experience', e.target.value)}
-            placeholder="e.g. 3-5 years, Senior level"
-            className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 transition-all"
-          />
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Required Experience</label>
+          <div className="flex gap-4">
+            <input 
+              type="text"
+              value={requirements.experience}
+              onChange={e => handleChange('experience', e.target.value)}
+              placeholder="e.g. 3-5 years, Senior level"
+              className="flex-1 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 transition-all"
+            />
+            <input 
+              type="number"
+              value={requirements.weightExperience}
+              onChange={e => handleChange('weightExperience', parseInt(e.target.value))}
+              placeholder="Weight (0-10)"
+              className="w-24 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 transition-all"
+            />
+          </div>
         </div>
 
         <div>
           <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Required Skills</label>
-          <textarea 
-            value={requirements.skills}
-            onChange={e => handleChange('skills', e.target.value)}
-            placeholder="e.g. React, Node.js, Project Management"
-            rows={3}
-            className="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 transition-all resize-none"
-          />
+          <div className="flex gap-4">
+            <textarea 
+              value={requirements.skills}
+              onChange={e => handleChange('skills', e.target.value)}
+              placeholder="e.g. React, Node.js, Project Management"
+              rows={3}
+              className="flex-1 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 transition-all resize-none"
+            />
+            <input 
+              type="number"
+              value={requirements.weightSkills}
+              onChange={e => handleChange('weightSkills', parseInt(e.target.value))}
+              placeholder="Weight (0-10)"
+              className="w-24 h-[100px] bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 transition-all"
+            />
+          </div>
         </div>
 
         <div>

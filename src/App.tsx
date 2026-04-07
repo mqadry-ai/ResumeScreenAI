@@ -19,7 +19,9 @@ export default function App() {
   const [currentRequirements, setCurrentRequirements] = useState({
     field: '',
     experience: '',
+    weightExperience: 5,
     skills: '',
+    weightSkills: 5,
     otherRequirements: ''
   });
   const [results, setResults] = useState<CandidateResult[]>([]);
@@ -62,7 +64,9 @@ export default function App() {
       setCurrentRequirements({
         field: profile.field,
         experience: profile.experience,
+        weightExperience: profile.weightExperience,
         skills: profile.skills,
+        weightSkills: profile.weightSkills,
         otherRequirements: profile.otherRequirements
       });
     }
@@ -91,7 +95,7 @@ export default function App() {
       if (newProfiles.length > 0) {
         setCurrentRequirements(newProfiles[0]);
       } else {
-        setCurrentRequirements({ field: '', experience: '', skills: '', otherRequirements: '' });
+        setCurrentRequirements({ field: '', experience: '', weightExperience: 5, skills: '', weightSkills: 5, otherRequirements: '' });
       }
     }
   };
@@ -108,6 +112,7 @@ export default function App() {
       fileName: file.name,
       name: 'Analyzing...',
       score: 0,
+      scoreBreakdown: { experience: 0, skills: 0, other: 0 },
       strengths: [],
       summary: '',
       status: 'pending',
@@ -131,6 +136,7 @@ export default function App() {
           status: 'success',
           name: analysis.name,
           score: analysis.score,
+          scoreBreakdown: analysis.scoreBreakdown,
           strengths: analysis.strengths,
           summary: analysis.summary
         } : r));
@@ -170,7 +176,7 @@ export default function App() {
             <Briefcase className="w-6 h-6" />
           </div>
           <h1 className="text-xl font-bold tracking-tight bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text text-transparent">
-            HR ScreenAI
+            Resume Screen AI
           </h1>
         </div>
         <button

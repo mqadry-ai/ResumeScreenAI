@@ -31,8 +31,13 @@ export function CandidateCard({ result }: Props) {
         </div>
         
         {result.status === 'success' && (
-          <div className={`flex flex-col items-center justify-center w-14 h-14 rounded-full border-2 shadow-sm ${getScoreColor(result.score)}`}>
-            <span className="text-lg font-bold leading-none">{result.score}</span>
+          <div className="flex flex-col items-center gap-2">
+            <div className={`flex flex-col items-center justify-center w-14 h-14 rounded-full border-2 shadow-sm ${getScoreColor(result.score)}`}>
+              <span className="text-lg font-bold leading-none">{result.score}</span>
+            </div>
+            <div className="text-[10px] text-slate-500 dark:text-slate-400 font-medium">
+              Exp: {result.scoreBreakdown.experience} | Skills: {result.scoreBreakdown.skills} | Other: {result.scoreBreakdown.other}
+            </div>
           </div>
         )}
         {result.status === 'analyzing' && (
